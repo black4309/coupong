@@ -10,7 +10,6 @@
 
 <br/>
 
-
 <table class="table table-striped">
   <thead>
     <tr>
