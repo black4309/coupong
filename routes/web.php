@@ -25,3 +25,9 @@ Route::get('/use', 'MainController@use');
 
 // 쿠폰 통계
 Route::get('/stat', 'MainController@stat');
+
+// 쿠폰 중복 조회
+Route::get('/check', 'MainController@checkCoupon');
+
+// TEST
+Route::get('/test', 'MainController@test');

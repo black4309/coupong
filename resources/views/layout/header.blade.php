@@ -3,8 +3,41 @@
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
+
+<script type="text/javascript">
+
+  function requestService(url, request_data)
+  {
+    var return_val = "";
+    $.ajax({
+      url:url,
+      timeout:1000,
+      async:false,
+      data:'request_data',
+      dataType:'html',
+      success : function(data, status, xhr) {
+        return_val = data;
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        alert(jqXHR.responseText);
+        return false;
+      }
+    });
+
+    return return_val;
+  }
+
+  function maxLengthCheck(object){
+    if (object.value.length > object.maxLength){
+      object.value = object.value.slice(0, object.maxLength);
+    }
+  }
+
+</script>
+
 <body>
 
 <h2>쿠!퐁!</h2>
@@ -12,10 +45,6 @@
 <br/>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">메뉴</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
