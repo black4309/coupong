@@ -10,7 +10,7 @@
 
   function allSearch()
   {
-    window.location.href = "/list";
+    window.location.href = "/list"; // 리다이렉트
   }
 
 </script>

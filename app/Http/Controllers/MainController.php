@@ -18,7 +18,7 @@ class MainController extends Controller
       return view('pages.publish');
   }
 
-
+//리스트 출력
   public function list(Request $request)
   {
       $group = $request->input('group');
@@ -33,6 +33,7 @@ class MainController extends Controller
               );
   }
 
+//쿠폰중복검사 
   public function checkCoupon(Request $request)
   {
       $code = $request->input('code');

@@ -9,6 +9,7 @@
 
 <script type="text/javascript">
 
+//쿠폰중복검사 (Ajax)
   function requestService(url, request_data)
   {
     var return_val = "";
@@ -30,6 +31,7 @@
     return return_val;
   }
 
+//쿠폰 자리수 체크 (19자리)
   function maxLengthCheck(object){
     if (object.value.length > object.maxLength){
       object.value = object.value.slice(0, object.maxLength);

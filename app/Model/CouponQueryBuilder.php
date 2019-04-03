@@ -8,6 +8,8 @@ use Session;
 
 class CouponQueryBuilder
 {
+
+  //쿠폰 리스트 
     public function selectCouponList($group)
     {
       $query =
@@ -35,7 +37,7 @@ class CouponQueryBuilder
 
     }
 
-
+// 쿠폰 사용여부
     public function checkCoupon($code)
     {
       $query =
@@ -50,6 +52,7 @@ class CouponQueryBuilder
       return $result;
     }
 
+// 쿠폰 사용
     public function useCoupon($code)
     {
       $query =
