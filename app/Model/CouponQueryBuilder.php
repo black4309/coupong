@@ -4,13 +4,25 @@ namespace App\Model;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log; //로그
+use Illuminate\Support\Facades\Log;
 use Session;
 
 class CouponQueryBuilder
 {
 
 // 쿠폰 난수 발생
+
+    public function generateCouponGroup($length = 5) {
+
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return "GROUP_".$randomString;
+    }
+
     public function generateCouponCode($prefix, $length = 13) {
 
         $prefix = strtoupper($prefix);
@@ -96,13 +108,30 @@ class CouponQueryBuilder
 // ** 쿠폰 생성
     public function publish_db($prefix)
     {
+      // group 생성
+      $query =
+      "
+      INSERT INTO COUPON_GROUP
+      VALUES
+      (NULL, ?)
+      ";
+
+      $groupName = $this->generateCouponGroup();
+
+      DB::insert($query, [$groupName]);
+      $groupUID = DB::getPdo()->lastInsertId();
 
       $addQuery = "";
       $totalCount = 100000;
       for($i = 0; $i < $totalCount; $i++)
       {
         $code = $this->generateCouponCode($prefix);
-        $addQuery .= "('".$code."', NULL, 0, 1)";
+        $random = mt_rand(1, 5);
+
+        if($random == 5) // 20% 확률로 사용됨
+          $addQuery .= "('".$code."', CURRENT_TIMESTAMP, 1, ".$groupUID.")";
+        else
+          $addQuery .= "('".$code."', NULL, 0, ".$groupUID.")";
 
         if($i != $totalCount-1)
           $addQuery .= ",";
@@ -115,8 +144,7 @@ class CouponQueryBuilder
       VALUES
       ".$addQuery;
 
-      DB::insert($query, [$code]);
-
+      DB::insert($query);
     }
 
 // 쿠폰 사용
@@ -132,6 +160,22 @@ class CouponQueryBuilder
       ";
 
       DB::insert($query, [$code]);
+    }
+
+    public function useStat()
+    {
+      $query =
+      "
+      SELECT CG.COUPON_GROUP_NAME COUPON_GROUP, COUNT(CG.COUPON_GROUP_UID) USE_COUNT
+      FROM
+      COUPON C, COUPON_GROUP CG
+      WHERE C.COUPON_GROUP_UID=CG.COUPON_GROUP_UID
+      AND C.IS_USE=1
+      GROUP BY CG.COUPON_GROUP_NAME, CG.COUPON_GROUP_UID
+      ";
+
+      $result = DB::select($query);
+      return $result;
     }
 
 

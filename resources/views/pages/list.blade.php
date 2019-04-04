@@ -5,8 +5,15 @@
 
   function paging(id)
   {
+
+    var group = request.getParameter("group");
+
     var page_number = $(id).val();
-    window.location.href = "/list?page=" + page_number;
+
+    if(group.length > 0)
+      window.location.href = "/list?page=" + page_number + "&group=" + group;
+    else
+      window.location.href = "/list?page=" + page_number;
   }
 
   function search()

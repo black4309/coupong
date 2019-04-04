@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\CouponQueryBuilder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Session;
 
 class CouponContorller extends Controller
@@ -28,11 +29,7 @@ class CouponContorller extends Controller
     $prefix = $request->input('prefix');
     $couponQueryBuilder = new   CouponQueryBuilder();
 
-
     $publish_dbResults = $couponQueryBuilder->publish_db($prefix);
-
-
-
 
     $check = "발행 성공";
     return view('pages.publish_db',
@@ -104,7 +101,29 @@ class CouponContorller extends Controller
 
   public function stat()
   {
-      return view('pages.stat');
+      $couponQueryBuilder = new CouponQueryBuilder();
+      $statResults = $couponQueryBuilder->useStat();
+
+      return view('pages.stat',
+                [
+                 'statResults' => $statResults
+                ]
+              );
+  }
+
+  public function stat_data()
+  {
+      $couponQueryBuilder = new CouponQueryBuilder();
+      $statResults = $couponQueryBuilder->useStat();
+
+      return view('pages.stat_data',
+                [
+                 'statResults' => $statResults
+                ]
+              );
+
+
+      //return view('pages.stat_data')->with('data', json_encode($statResults));
   }
 
 
