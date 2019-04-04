@@ -5,9 +5,31 @@
 function publish()
 {
   var prefix = $("#code-prefix").val();
+
+  if(prefix.length != 3)
+  {
+    alert('쿠폰 앞자리 3글자를 입력하세요');
+    return;
+  }
+
   var ret = requestService("/publish_db?prefix=" + prefix);
   alert(ret);
 }
+
+
+  // 페이지 시작 시, 자동 실행
+  $(document).ready(function(){
+
+      $('#code-prefix').keydown(function(evt){
+    		if((evt.keyCode) && (evt.keyCode==13)) {
+    			publish();
+    		}
+    	});
+
+
+  });
+
+
 </script>
 
 <br/>

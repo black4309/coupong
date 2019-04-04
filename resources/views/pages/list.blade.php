@@ -19,6 +19,13 @@
   function search()
   {
     var search = $("#group-search").val();
+
+    if(search.length == 0)
+    {
+      alert('그룹명을 입력하세요');
+      return;
+    }
+
     window.location.href = "/list?group=" + search;
   }
 
@@ -26,6 +33,20 @@
   {
     window.location.href = "/list"; // 리다이렉트
   }
+
+
+  // 페이지 시작 시, 자동 실행
+  $(document).ready(function(){
+
+      $('#group-search').keydown(function(evt){
+        if((evt.keyCode) && (evt.keyCode==13)) {
+          search();
+        }
+      });
+
+
+  });
+
 
 </script>
 

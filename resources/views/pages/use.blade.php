@@ -8,9 +8,28 @@
 function check()
 {
   var code = $("#coupon-input").val();
+
+  if(code.length != 19)
+  {
+    alert('쿠폰번호 19자리를 입력하세요');
+    return;
+  }
+
   var ret = requestService("/check?code=" + code, );
   alert(ret);
 }
+
+
+// 페이지 시작 시, 자동 실행
+$(document).ready(function(){
+
+    $('#coupon-input').keydown(function(evt){
+      if((evt.keyCode) && (evt.keyCode==13)) {
+        check();
+      }
+    });
+    
+  });
 
 </script>
 

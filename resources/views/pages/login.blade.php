@@ -6,6 +6,12 @@ function check()
   var id = $("#user-id").val();
   var password = $("#user-password").val();
 
+  if(id.length == 0 || password.length ==0)
+  {
+    alert('아이디 혹은 패스워드를 입력하세요');
+    return;
+  }
+
   var ret = requestService("/login_check?id=" + id + "&password=" + password, );
 
   if(ret == 0)
@@ -13,6 +19,32 @@ function check()
   else
     window.location.href = "/main";
 }
+
+
+
+
+
+
+  // 페이지 시작 시, 자동 실행
+  $(document).ready(function(){
+
+      $('#user-id').keydown(function(evt){
+    		if((evt.keyCode) && (evt.keyCode==13)) {
+    			check();
+    		}
+    	});
+
+      $('#user-password').keydown(function(evt){
+    		if((evt.keyCode) && (evt.keyCode==13)) {
+    			check();
+    		}
+    	});
+
+  });
+
+
+
+
 </script>
 
 
