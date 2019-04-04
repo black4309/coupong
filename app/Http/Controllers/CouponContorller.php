@@ -8,18 +8,21 @@ use Session;
 
 class CouponContorller extends Controller
 {
+
+  //쿠폰발행
   public function publish()
   {
       return view('pages.publish');
   }
 
-
+//10만회 수행시간 측정
   public function get_time() {
     list($usec, $sec) = explode(" ", microtime());
     return ((float)$usec + (float)$sec);
   }
 
 
+// 생성된 쿠폰을 DB 입력
   public function publish_db(Request $request)
   {
     $prefix = $request->input('prefix');
@@ -42,7 +45,7 @@ class CouponContorller extends Controller
 
 
 
-//리스트 출력
+//쿠폰 리스트 출력
   public function list(Request $request)
   {
       $group = $request->input('group');
@@ -58,7 +61,7 @@ class CouponContorller extends Controller
               );
   }
 
-//쿠폰중복검사
+//쿠폰 중복검사
   public function checkCoupon(Request $request)
   {
       $code = $request->input('code');
@@ -67,6 +70,7 @@ class CouponContorller extends Controller
       $couponQueryBuilder = new CouponQueryBuilder();
       $existResults = $couponQueryBuilder->isExistCoupon($code);
 
+      // 쿠폰 식별
       if($existResults[0]->COUNT == 0)
       {
           $checkString = "쿠폰이 존재하지 않습니다.";

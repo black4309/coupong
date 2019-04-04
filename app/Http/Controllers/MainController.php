@@ -24,6 +24,7 @@ class MainController extends Controller
       return view('pages.login');
   }
 
+  // 로그인된 세션 기록을 지우고 첫 페이지로 이동 
   public function logout()
   {
     Session::forget('session_isLogin');

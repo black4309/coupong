@@ -4,12 +4,13 @@ namespace App\Model;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Log; //로그
 use Session;
 
 class CouponQueryBuilder
 {
 
+// 쿠폰 난수 발생
     public function generateCouponCode($prefix, $length = 13) {
 
         $prefix = strtoupper($prefix);
@@ -25,7 +26,7 @@ class CouponQueryBuilder
         return $code;
     }
 
-    //쿠폰 리스트
+    //**쿠폰 리스트
     public function selectCouponList($group, $page)
     {
       if($page == null)
@@ -92,7 +93,7 @@ class CouponQueryBuilder
       return $result;
     }
 
-// 쿠폰 사용
+// ** 쿠폰 생성
     public function publish_db($prefix)
     {
 
