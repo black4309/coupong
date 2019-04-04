@@ -12,7 +12,8 @@
 */
 
 // 메인
-Route::get('/', 'MainController@index');
+Route::get('/login', 'MainController@login');
+
 
 // 쿠폰발행
 Route::get('/publish', 'MainController@publish');

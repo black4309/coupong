@@ -1,3 +1,4 @@
+@include('layout.include')
 @include('layout.header')
 
 

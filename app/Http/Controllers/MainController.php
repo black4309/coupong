@@ -8,9 +8,10 @@ use Session;
 
 class MainController extends Controller
 {
-  public function index()
+
+  public function login()
   {
-      return view('home');
+      return view('pages.login');
   }
 
   public function publish()
@@ -33,7 +34,7 @@ class MainController extends Controller
               );
   }
 
-//쿠폰중복검사 
+//쿠폰중복검사
   public function checkCoupon(Request $request)
   {
       $code = $request->input('code');
