@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\CouponQueryBuilder;
+use App\Model\MainQueryBuilder;
 use Illuminate\Http\Request;
 use Session;
 
@@ -14,65 +14,36 @@ class MainController extends Controller
       return view('pages.login');
   }
 
-  public function publish()
+  public function main()
   {
-      return view('pages.publish');
+      return view('pages.main');
   }
 
-//리스트 출력
-  public function list(Request $request)
+  public function login_check(Request $request)
   {
-      $group = $request->input('group');
+    $check = 0;
 
-      $couponQueryBuilder = new   CouponQueryBuilder();
-      $couponListResults = $couponQueryBuilder->selectCouponList($group);
+    $id = $request->input('id');
+    $password = $request->input('password');
 
-      return view('pages.list',
-                [
-                 'couponListResults' => $couponListResults
-                ]
-              );
-  }
+    $mainQueryBuilder = new MainQueryBuilder();
+    $results = $mainQueryBuilder->checklogin($id, $password);
 
-//쿠폰중복검사
-  public function checkCoupon(Request $request)
-  {
-      $code = $request->input('code');
+    if(count($results) == 1)
+    {
+      $userID = $results[0]->ID;
 
-      $couponQueryBuilder = new CouponQueryBuilder();
-      $checkResults = $couponQueryBuilder->checkCoupon($code);
-
-      $checkString = "중복되지 않았습니다.";
-      if($checkResults[0]->COUNT == 1)
-      {
-        $checkString = "중복되었습니다.";
-      }
+      if($userID == "admin")
+        $check = 1;
       else
-      {
-        $couponQueryBuilder->useCoupon($code);
-      }
+        $check = 2;
+    }
 
-      return view('pages.check',
-                [
-                 'checkString' => $checkString
-                ]
-              );
-  }
-
-  public function use()
-  {
-      return view('pages.use');
-  }
-
-  public function stat()
-  {
-      return view('pages.stat');
-  }
-
-
-  public function test()
-  {
-      return view('pages.test');
+    return view('pages.login_check',
+              [
+               'check' => $check
+              ]
+            );
   }
 }
 

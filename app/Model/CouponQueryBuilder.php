@@ -4,13 +4,12 @@ namespace App\Model;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Session;
 
 class CouponQueryBuilder
 {
-
-
-  //쿠폰 리스트
+    //쿠폰 리스트
     public function selectCouponList($group)
     {
       $query =
