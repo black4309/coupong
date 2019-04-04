@@ -61,11 +61,13 @@
 
 <br/>
 
+<center>
 @for ($i = 1; $i <= 10; $i++)
   <input type="button" class="btn btn-primary btn-sm" value="{{$i}}" onclick="paging(this)"></input>
 @endfor
+</center>
 
-<br/><br/>
+<br/>
 
 
 <table class="table table-striped">

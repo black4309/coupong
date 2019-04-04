@@ -1,6 +1,6 @@
-
-<h2>쿠!퐁!</h2>
-
+<br/>
+<img src="/source/images/logo.png"/>
+<br/>
 <span style="float:right">
   {{Session::get('session_username')}} 님 <a href="/logout">로그아웃</a>
 </span>

@@ -80,9 +80,6 @@
 
   var request = new Request();
 
-
-
-
 </script>
 
 <body>
