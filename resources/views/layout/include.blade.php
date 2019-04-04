@@ -15,7 +15,7 @@
     var return_val = "";
     $.ajax({
       url:url,
-      timeout:1000,
+      timeout:60000,
       async:false,
       data:'request_data',
       dataType:'html',

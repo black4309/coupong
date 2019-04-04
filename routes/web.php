@@ -29,6 +29,9 @@ Route::get('/main', 'MainController@main');
 // 쿠폰발행
 Route::get('/publish', 'CouponContorller@publish');
 
+// 쿠폰 DB 입력
+Route::get('/publish_db', 'CouponContorller@publish_db');
+
 // 쿠폰 리스트
 Route::get('/list', 'CouponContorller@list');
 

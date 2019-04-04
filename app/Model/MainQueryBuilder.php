@@ -16,7 +16,7 @@ class MainQueryBuilder
 
       $query =
       "
-      SELECT ID, NAME
+      SELECT MEMBER_UID, ID, NAME
       FROM MEMBER
       WHERE ID=:ID
       AND PASSWORD=:PASSWORD

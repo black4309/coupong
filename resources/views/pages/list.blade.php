@@ -3,6 +3,12 @@
 
 <script>
 
+  function paging(id)
+  {
+    var page_number = $(id).val();
+    window.location.href = "/list?page=" + page_number;
+  }
+
   function search()
   {
     var search = $("#group-search").val();
@@ -26,6 +32,13 @@
 </div>
 
 <br/>
+
+@for ($i = 1; $i <= 10; $i++)
+  <input type="button" class="btn btn-primary btn-sm" value="{{$i}}" onclick="paging(this)"></input>
+@endfor
+
+<br/><br/>
+
 
 <table class="table table-striped">
   <thead>

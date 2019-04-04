@@ -1,32 +1,16 @@
 @include('layout.include')
 @include('layout.header')
 
+<script>
+function publish()
+{
+  var prefix = $("#code-prefix").val();
+  var ret = requestService("/publish_db?prefix=" + prefix);
+  alert(ret);
+}
+</script>
 
 <br/>
-
-@php
-
-// 랜덤 쿠폰 생성
-function generateCouponCode($prefix, $length = 13) {
-    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    $code = $prefix.$randomString;
-    $code = substr($code, 0, 4)."-".substr($code, 4, 4)."-".substr($code, 8, 4)."-".substr($code, 12, 4);
-
-    return $code;
-}
-
-
-
-
-// 랜덤 쿠폰 생성
-echo generateCouponCode("HLO");
-
-@endphp
 
 <br/>
 <center>
@@ -35,8 +19,8 @@ echo generateCouponCode("HLO");
     <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroup-sizing-default">Prefix (3자리)</span>
     </div>
-    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-    <button type="button" class="btn btn-secondary">발행</button>
+    <input type="text" id="code-prefix" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" maxlength="3" oninput="maxLengthCheck(this)">
+    <button type="button" class="btn btn-secondary" onclick="publish()">발행</button>
   </div>
 
 </center>

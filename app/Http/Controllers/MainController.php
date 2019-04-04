@@ -27,6 +27,7 @@ class MainController extends Controller
   public function logout()
   {
     Session::forget('session_isLogin');
+    Session::forget('session_useruid');
     Session::forget('session_userid');
     Session::forget('session_username');
 
@@ -53,6 +54,7 @@ class MainController extends Controller
       $check = 1;
 
       Session::put('session_isLogin', "1");
+      Session::put('session_useruid', $results[0]->MEMBER_UID);
       Session::put('session_userid', $results[0]->ID);
       Session::put('session_username', $results[0]->NAME);
     }
