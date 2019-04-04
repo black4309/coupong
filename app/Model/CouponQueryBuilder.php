@@ -129,9 +129,18 @@ class CouponQueryBuilder
         $random = mt_rand(1, 5);
 
         if($random == 5) // 20% 확률로 사용됨
-          $addQuery .= "('".$code."', CURRENT_TIMESTAMP, 1, ".$groupUID.")";
+        {
+          $query =
+          "
+          SELECT MEMBER_UID FROM MEMBER WHERE ID <> 'admin' ORDER BY RAND() LIMIT 1
+          ";
+          $result = DB::select($query);
+          $memberUID = $result[0]->MEMBER_UID;
+
+          $addQuery .= "('".$code."', CURRENT_TIMESTAMP, 1, ".$groupUID.", ".$memberUID.")";
+        }
         else
-          $addQuery .= "('".$code."', NULL, 0, ".$groupUID.")";
+          $addQuery .= "('".$code."', NULL, 0, ".$groupUID.", NULL)";
 
         if($i != $totalCount-1)
           $addQuery .= ",";
@@ -140,7 +149,7 @@ class CouponQueryBuilder
       $query =
       "
       INSERT INTO COUPON
-      (COUPON_CODE, USE_DATETIME, IS_USE, COUPON_GROUP_UID)
+      (COUPON_CODE, USE_DATETIME, IS_USE, COUPON_GROUP_UID, MEMBER_UID)
       VALUES
       ".$addQuery;
 
