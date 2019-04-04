@@ -31,3 +31,6 @@ Route::get('/check', 'MainController@checkCoupon');
 
 // TEST
 Route::get('/test', 'MainController@test');
+
+
+?>
