@@ -24,6 +24,15 @@ class MainController extends Controller
       return view('pages.login');
   }
 
+  public function logout()
+  {
+    Session::forget('session_isLogin');
+    Session::forget('session_userid');
+    Session::forget('session_username');
+
+    return redirect('/');
+  }
+
   public function main()
   {
       return view('pages.main');

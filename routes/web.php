@@ -20,6 +20,9 @@ Route::get('/login', 'MainController@login');
 // 로그인 체크
 Route::get('/login_check', 'MainController@login_check');
 
+// 로그아웃
+Route::get('/logout', 'MainController@logout');
+
 // 메인 페이지
 Route::get('/main', 'MainController@main');
 
