@@ -11,6 +11,26 @@
 <div id="chart">
 </div>
 
+<br/><br/>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">그룹명</th>
+      <th scope="col">쿠폰사용수</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($statResults as $statResult)
+    <tr>
+      <td>{{$statResult->COUPON_GROUP}}</td>
+      <td>{{$statResult->USE_COUNT}}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+
+
     <script>
 
     //var jbAry = [ 'GROUP_32VDO', 'GROUP_67XNG', 'GROUP_NJP3W', 'GROUP_P2006'];
@@ -42,33 +62,6 @@
               }
           }
         });
-
-
-        /*
-      var chart = c3.generate({
-          bindto: '#chart',
-          data:{
-              json:{
-                  'GROUP_NAME': ['20171101', '20171102', '20171103'],
-                  '사용횟수' : [30, 200, 100]
-              },
-              x: 'GROUP_NAME',
-              type: 'line',
-              types:{
-                  사용횟수: 'bar',
-              }
-          },
-          grid: {
-              x: {
-                  show: true
-              },
-              y: {
-                  show: true
-              }
-          }
-      });
-      */
-
     }
 
       $(document).ready(function(){
