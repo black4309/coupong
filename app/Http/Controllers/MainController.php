@@ -8,6 +8,16 @@ use Session;
 
 class MainController extends Controller
 {
+  public function index()
+  {
+      $isLogin = Session::get('session_isLogin');
+
+      $page = "pages.login";
+      if($isLogin == 1)
+        return view('pages.main');
+
+      return view($page);
+  }
 
   public function login()
   {
@@ -31,12 +41,11 @@ class MainController extends Controller
 
     if(count($results) == 1)
     {
-      $userID = $results[0]->ID;
+      $check = 1;
 
-      if($userID == "admin")
-        $check = 1;
-      else
-        $check = 2;
+      Session::put('session_isLogin', "1");
+      Session::put('session_userid', $results[0]->ID);
+      Session::put('session_username', $results[0]->NAME);
     }
 
     return view('pages.login_check',

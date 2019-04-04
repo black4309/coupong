@@ -11,6 +11,9 @@
 |
 */
 
+// index
+Route::get('/', 'MainController@index');
+
 // 로그인
 Route::get('/login', 'MainController@login');
 
