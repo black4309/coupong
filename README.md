@@ -11,7 +11,7 @@
 ![COPY_화면](./docs/images/config1.png)
 ![env-DB_정보변경](./docs/images/config2.png)
 
-> 테스트 서버 구동 방법  
+- 테스트 서버 구동 방법  
 > {프로젝트 경로}/php artisan serve --port={포트번호}
 
 
