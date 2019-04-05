@@ -7,6 +7,10 @@
 
 > 프로젝트 다운로드 후, install 폴더의 config.zip 를 프로젝트 폴더에 압축 해제  
 > .env 파일의 MySQL DB 정보를 수정  
+
+![COPY_화면](./docs/images/config1.png)
+![env-DB_정보변경](./docs/images/config2.png)
+
 > * 테스트 서버 구동 방법 *
 > {프로젝트 경로}/php artisan serve --port={포트번호}
 
