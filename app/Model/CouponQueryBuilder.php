@@ -163,16 +163,19 @@ class CouponQueryBuilder
 // 쿠폰 사용
     public function useCoupon($code)
     {
+      $memberUID = Session::get('session_useruid');
+
       $query =
       "
       UPDATE COUPON
       SET
       USE_DATETIME=CURRENT_TIMESTAMP
-      ,MEMBER_UID=2
+      ,MEMBER_UID=?
+      ,IS_USE=1
       WHERE COUPON_CODE=?
       ";
 
-      DB::insert($query, [$code]);
+      DB::insert($query, [$memberUID, $code]);
     }
 
     public function useStat()
