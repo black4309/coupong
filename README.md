@@ -80,4 +80,4 @@ https://github.com/black4309/coupong/blob/master/docs/%EC%B4%88%EA%B8%B0_%EB%8D%
 ![일반회원_쿠폰사용](./docs/images/member_use.png)
 
 - 쿠폰 존재 여부 확인 가능
-- 쿠폰이 사용 여부 확인 가능
+- 쿠폰 사용 여부 확인 가능
