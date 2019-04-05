@@ -15,6 +15,10 @@
 
     <ul class="navbar-nav mr-auto">
 
+      <li class="nav-item active">
+        <a class="nav-link" href="/main"><strong>HOME</strong></a>
+      </li>
+
 @if(Session::get('session_userid') == "admin")
 
       <li class="nav-item active">

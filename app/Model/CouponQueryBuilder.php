@@ -104,7 +104,7 @@ class CouponQueryBuilder
       return $result;
     }
 
-// ** 쿠폰 생성 및 랜덤 확률 지정 
+// ** 쿠폰 생성 및 랜덤 확률 지정
     public function publish_db($prefix)
     {
       // group 생성
@@ -122,6 +122,15 @@ class CouponQueryBuilder
 
       $addQuery = "";
       $totalCount = 100000;
+
+
+      $query =
+      "
+      SELECT MEMBER_UID FROM MEMBER WHERE ID <> 'admin'
+      ";
+      $memberResult = DB::select($query);
+
+
       for($i = 0; $i < $totalCount; $i++)
       {
         $code = $this->generateCouponCode($prefix);
@@ -129,12 +138,8 @@ class CouponQueryBuilder
 
         if($random == 5) // 20% 확률로 사용됨
         {
-          $query =
-          "
-          SELECT MEMBER_UID FROM MEMBER WHERE ID <> 'admin' ORDER BY RAND() LIMIT 1
-          ";
-          $result = DB::select($query);
-          $memberUID = $result[0]->MEMBER_UID;
+          $randomMember = mt_rand(0, count($memberResult)-1);
+          $memberUID = $memberResult[$randomMember]->MEMBER_UID;
 
           $addQuery .= "('".$code."', CURRENT_TIMESTAMP, 1, ".$groupUID.", ".$memberUID.")";
         }

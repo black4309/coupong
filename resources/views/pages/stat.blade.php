@@ -42,11 +42,8 @@
     @endforeach
 
     //
-    function chartLoad(stat_data)
+    function initChart()
     {
-        console.log(stat_data);
-
-
         // 그래프 생성
         var chart = c3.generate({
             bindto: '#chart',
@@ -58,22 +55,13 @@
 //                // x 축에서 추출할 목록 (쿠폰 그룹명)
                 value: c3KeyArray
             }
-          },
-          axis: {
-              x: {
-  //                type: 'category'
-              }
           }
         });
     }
 
-      $(document).ready(function(){
-
-        var stat_data = requestService("/stat_data");
-
-
-        chartLoad(stat_data);
-      });
+    $(document).ready(function(){
+      initChart();
+    });
 
     </script>
 

@@ -65,9 +65,14 @@
 <br/>
 
 <center>
-@for ($i = 1; $i <= 10; $i++)
-  <input type="button" class="btn btn-primary btn-sm" value="{{$i}}" onclick="paging(this)"></input>
-@endfor
+
+@if(count($couponListResults) > 0)
+
+  @for ($i = 1; $i <= 10; $i++)
+    <input type="button" class="btn btn-primary btn-sm" value="{{$i}}" onclick="paging(this)"></input>
+  @endfor
+
+@endif
 </center>
 
 <br/>
