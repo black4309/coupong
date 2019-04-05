@@ -5,8 +5,8 @@
 > Windows 10 / PHP 7.2 / Laravel 5 / MariaDB 10
 - 설치& 방법  
 
-> 프로젝트 다운로드 후, install 폴더의 config.zip 를 프로젝트 폴더에 압축 해제
-> .env 파일의 MySQL DB 정보를 수정합니다.
+> 프로젝트 다운로드 후, install 폴더의 config.zip 를 프로젝트 폴더에 압축 해제  
+> .env 파일의 MySQL DB 정보를 수정  
 > * 테스트 서버 구동 방법 *
 > {프로젝트 경로}/php artisan serve --port={포트번호}
 
