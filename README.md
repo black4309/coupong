@@ -13,6 +13,12 @@
 
 ### ERD 설계
 
+> DB 스키마
+https://github.com/black4309/coupong/blob/master/docs/DB_%EC%8A%A4%ED%82%A4%EB%A7%88.sql
+
+> 초기 데이터 (MEMBER 테이블 Insert 데이터이며, 모든 user 의 패스워드는 1234)
+https://github.com/black4309/coupong/blob/master/docs/%EC%B4%88%EA%B8%B0_%EB%8D%B0%EC%9D%B4%ED%84%B0.sql
+
 > 논리적 스키마 설계
 ![논리적_스키마](./docs/images/erd1.png)
 
