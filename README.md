@@ -58,7 +58,7 @@ https://github.com/black4309/coupong/blob/master/docs/%EC%B4%88%EA%B8%B0_%EB%8D%
 
 ![관리자_쿠폰리스트](./docs/images/admin_list.png)
 
-- 100 건씩 페이징 처리 (이전/다음/끝으로 가기는 추후 기능 추가 필요)  
+- 100 건씩 페이징 처리  
 - 그룹명으로 검색 가능
 
 
