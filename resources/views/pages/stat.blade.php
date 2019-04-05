@@ -34,17 +34,20 @@
     <script>
 
     //var jbAry = [ 'GROUP_32VDO', 'GROUP_67XNG', 'GROUP_NJP3W', 'GROUP_P2006'];
-    c3KeyArray = new Array;
+
+    c3KeyArray = new Array; // 그래프에 데이터를  입력받기 위한 배열선언
 
     @foreach($statResults as $statResult)
       c3KeyArray.push('{{$statResult->COUPON_GROUP}}');
     @endforeach
 
+    //
     function chartLoad(stat_data)
     {
         console.log(stat_data);
 
 
+        // 그래프 생성
         var chart = c3.generate({
             bindto: '#chart',
             data: {
@@ -52,7 +55,7 @@
             mimeType: 'json',
             type: 'bar',
             keys: {
-//                x: 'name', // it's possible to specify 'x' when category axis
+//                // x 축에서 추출할 목록 (쿠폰 그룹명)
                 value: c3KeyArray
             }
           },

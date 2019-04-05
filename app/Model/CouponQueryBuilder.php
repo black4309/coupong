@@ -11,7 +11,6 @@ class CouponQueryBuilder
 {
 
 // 쿠폰 난수 발생
-
     public function generateCouponGroup($length = 5) {
 
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -105,7 +104,7 @@ class CouponQueryBuilder
       return $result;
     }
 
-// ** 쿠폰 생성
+// ** 쿠폰 생성 및 랜덤 확률 지정 
     public function publish_db($prefix)
     {
       // group 생성

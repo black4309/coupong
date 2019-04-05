@@ -1,6 +1,9 @@
 @include('layout.include')
 
 <script>
+
+// 로그인 textbox 공백 체크
+
 function check()
 {
   var id = $("#user-id").val();
@@ -50,6 +53,8 @@ function check()
 
 <br/><br/><br/><br/>
 <center>
+  <img src="/source/images/logo.png"/>
+  <br/><br/>
   <div class="wrapper" style="width:20%">
     <form class="form-signin">
       <input type="text" class="form-control" id="user-id" placeholder="아이디" required="" autofocus="" />

@@ -2,6 +2,9 @@
 @include('layout.header')
 
 <script>
+
+
+// 쿠폰 (Prefix) textbox 공백 체크 
 function publish()
 {
   var prefix = $("#code-prefix").val();

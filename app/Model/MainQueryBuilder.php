@@ -11,7 +11,6 @@ class MainQueryBuilder
 {
 
 // 아이디 & 패스워드 체크
-
     public function checklogin($id, $password)
     {
       Log::info("ID : ".$id);

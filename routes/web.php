@@ -41,7 +41,7 @@ Route::get('/use', 'CouponContorller@use');
 // 쿠폰 통계
 Route::get('/stat', 'CouponContorller@stat');
 
-// 쿠폰 통계
+// 쿠폰 통계 데이터 josn 형태 
 Route::get('/stat_data', 'CouponContorller@stat_data');
 
 // 쿠폰 중복 조회

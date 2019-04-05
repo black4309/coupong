@@ -16,13 +16,6 @@ class CouponContorller extends Controller
       return view('pages.publish');
   }
 
-//10만회 수행시간 측정
-  public function get_time() {
-    list($usec, $sec) = explode(" ", microtime());
-    return ((float)$usec + (float)$sec);
-  }
-
-
 // 생성된 쿠폰을 DB 입력
   public function publish_db(Request $request)
   {
@@ -32,6 +25,7 @@ class CouponContorller extends Controller
     $publish_dbResults = $couponQueryBuilder->publish_db($prefix);
 
     $check = "발행 성공";
+
     return view('pages.publish_db',
               [
                'check' => $check
@@ -99,6 +93,8 @@ class CouponContorller extends Controller
       return view('pages.use');
   }
 
+
+// 통계
   public function stat()
   {
       $couponQueryBuilder = new CouponQueryBuilder();
@@ -111,6 +107,7 @@ class CouponContorller extends Controller
               );
   }
 
+ // 통계 데이터
   public function stat_data()
   {
       $couponQueryBuilder = new CouponQueryBuilder();

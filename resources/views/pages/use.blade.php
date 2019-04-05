@@ -5,6 +5,7 @@
 
 <script>
 
+// 쿠폰 textbox 공백 체크 
 function check()
 {
   var code = $("#coupon-input").val();
@@ -28,7 +29,7 @@ $(document).ready(function(){
         check();
       }
     });
-    
+
   });
 
 </script>

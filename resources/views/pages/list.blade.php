@@ -3,6 +3,8 @@
 
 <script>
 
+
+//페이징처리
   function paging(id)
   {
 
@@ -16,6 +18,7 @@
       window.location.href = "/list?page=" + page_number;
   }
 
+// 그룹검색 textbox 공백 체크
   function search()
   {
     var search = $("#group-search").val();
