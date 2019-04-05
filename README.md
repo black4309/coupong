@@ -1,6 +1,8 @@
 ## COUPONG (쿠퐁)
 
 - 개요 : 쿠폰 발행 / 사용 / 관리를 위한 시스템   
+- 개발 환경
+> Windows 10 / PHP 7.2 / Laravel 5 / MariaDB 10
 - 설치& 방법  
 
 > 프로젝트 다운로드 후, install 폴더의 config.zip 를 프로젝트 폴더에 압축을 풉니다.
